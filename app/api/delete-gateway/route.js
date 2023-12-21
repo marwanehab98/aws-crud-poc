@@ -7,8 +7,6 @@ export async function POST(request) {
     const body = await request.json();
     const { id } = body;
 
-    console.log(id);
-
     const response = await fetch(
       `https://6vkqtfzlw1.execute-api.us-west-1.amazonaws.com/test/items/${id}`,
       {
