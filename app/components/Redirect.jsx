@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const getHash = () => (typeof window !== 'undefined' ? decodeURIComponent(window.location.hash.replace('#', '')) : undefined);
 
@@ -9,10 +9,20 @@ export const dynamic = "force-dynamic"
 
 export default function Redirect() {
     const router = useRouter();
-    const hash = getHash();
-    const splitHash = hash.split('&');
+    const [hash, setHash] = useState(getHash());
 
     useEffect(() => {
+        const handleHashChange = () => {
+            setHash(getHash());
+        };
+        window.addEventListener('hashchange', handleHashChange);
+        return () => {
+            window.removeEventListener('hashchange', handleHashChange);
+        };
+    }, [])
+
+    useEffect(() => {
+        const splitHash = hash?.split('&');
         splitHash.forEach((value) => {
             const hashObject = value.split('=');
             if (hashObject[0] === 'expires_in') {
@@ -23,8 +33,7 @@ export default function Redirect() {
         });
 
         router.replace('/');
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [splitHash]);
+    }, [hash]);
 
     return <></>;
 }

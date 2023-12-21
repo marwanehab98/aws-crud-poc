@@ -11,26 +11,28 @@ export default function MainSegment() {
     const nameRef = useRef();
     const priceRef = useRef();
 
-    useEffect(() => {
+    const getItems = async () => {
         if (isAuth()) {
             setError(null);
             try {
-                fetch('/api/get-gateway', {
+                let response = await fetch('/api/get-gateway', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                         authorization: `${localStorage.getItem('id_token')}`,
                     },
-                }).then((value) => {
-                    value.json().then((apiRes) => {
-                        let body = JSON.parse(apiRes.body);
-                        setRes(body);
-                    });
-                });
+                })
+                let json = await response.json()
+                let body = JSON.parse(json.body);
+                setRes(body);
             } catch (error) {
                 console.log(error);
             }
         } else setError('Please Login');
+    }
+
+    useEffect(() => {
+        getItems()
     }, []);
 
     const handleDeleteClick = async (event, id) => {
