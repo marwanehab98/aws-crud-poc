@@ -24,13 +24,13 @@ const ItemCard = ({
             </div>
             <div className="flex flex-row gap-4 p-6 pt-0">
                 <button
-                    onClick={(e) => handleDelete(e, id)}
+                    onClick={(event) => handleDelete(event, id)}
                     className="select-none rounded-lg bg-pink-500 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 >
                     Delete
                 </button>
                 <button
-                    onClick={(e) => handleSelect(e, id, name, price)}
+                    onClick={(event) => handleSelect(event, id, name, price)}
                     className="select-none rounded-lg bg-pink-500 px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 >
                     {selected ? 'Unselect' : 'Select'}

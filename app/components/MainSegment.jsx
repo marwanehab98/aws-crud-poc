@@ -36,7 +36,7 @@ export default function MainSegment() {
     }, []);
 
     const handleDeleteClick = async (event, id) => {
-        event.preventDefault();
+        event?.preventDefault();
 
         if (!isAuth()) {
             setError('Please Login');
@@ -61,7 +61,7 @@ export default function MainSegment() {
     };
 
     const handlePutClick = async (event) => {
-        event.preventDefault();
+        event?.preventDefault();
         if (!isAuth()) {
             setError('Please Login');
             return;
@@ -98,7 +98,7 @@ export default function MainSegment() {
     };
 
     const handleSelectClick = (event, id, name, price) => {
-        event.preventDefault();
+        event?.preventDefault();
         if (id === selected) {
             setSelected(null);
             nameRef.current.value = '';
