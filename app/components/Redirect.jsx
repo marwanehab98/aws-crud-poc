@@ -1,9 +1,11 @@
 'use client'
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const getHash = () => (typeof window !== 'undefined' ? decodeURIComponent(window.location.hash.replace('#', '')) : undefined);
+
+export const dynamic = "force-dynamic"
 
 export default function Redirect() {
     const router = useRouter();
