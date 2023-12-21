@@ -26,13 +26,13 @@ export default function NavigationBar() {
     <div className="flex justify-between rounded-lg bg-black p-3.5 lg:p-6">
       <h1 className="text-xl font-medium text-gray-300">Oyoun Masr</h1>
       {!isAuthenticated && (
-        <Link
+        <a
           className="text-xl font-medium text-gray-300"
-          target="_parent"
+          target="_top"
           href={loginURL}
         >
           Login
-        </Link>
+        </a>
       )}
       {isAuthenticated && (
         <button
