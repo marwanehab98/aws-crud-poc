@@ -1,3 +1,5 @@
+'use client'
+
 const ItemCard = ({
     id,
     name,
