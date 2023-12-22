@@ -7,6 +7,7 @@ import ItemCard from './ItemCard';
 export default function MainSegment() {
     const [res, setRes] = useState([]);
     const [selected, setSelected] = useState(null);
+    const [token, setToken] = useState(null)
     const [error, setError] = useState(null);
     const nameRef = useRef();
     const priceRef = useRef();
@@ -19,7 +20,7 @@ export default function MainSegment() {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        authorization: `${localStorage.getItem('id_token')}`,
+                        authorization: token,
                     },
                 })
                 let json = await response.json()
@@ -32,6 +33,7 @@ export default function MainSegment() {
     }
 
     useEffect(() => {
+        setToken(localStorage.getItem('id_token'))
         getItems()
     }, []);
 
@@ -50,7 +52,7 @@ export default function MainSegment() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `${localStorage.getItem('id_token')}`,
+                authorization: token,
             },
             body: JSON.stringify({
                 id,
@@ -74,7 +76,7 @@ export default function MainSegment() {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `${localStorage.getItem('id_token')}`,
+                authorization: token,
             },
             body: JSON.stringify({
                 id: selected,

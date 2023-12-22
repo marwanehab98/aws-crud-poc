@@ -15,7 +15,8 @@ export default function NavigationBar() {
     const handleClick = (event) => {
         event.preventDefault();
 
-        localStorage.clear();
+        if (typeof window !== 'undefined')
+            localStorage.clear();
         setIsAuthenticated(false);
         router.replace('/redirect-login');
     };
