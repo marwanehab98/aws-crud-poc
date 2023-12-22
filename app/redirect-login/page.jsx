@@ -1,3 +1,5 @@
+'use client'
+
 import Redirect from "../components/Redirect";
 
 export const dynamic = "force-dynamic"
