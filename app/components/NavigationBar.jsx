@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 export default function NavigationBar() {
     const router = useRouter();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(isAuth());
 
     useEffect(() => {
         setIsAuthenticated(isAuth());

@@ -22,6 +22,7 @@ export default function Redirect() {
     }, [])
 
     useEffect(() => {
+        console.log("HASH: ", hash)
         if (hash && hash.length > 0) {
             const splitHash = hash?.split('&');
             splitHash.forEach((value) => {

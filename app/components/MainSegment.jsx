@@ -35,6 +35,10 @@ export default function MainSegment() {
         getItems()
     }, []);
 
+    useEffect(() => {
+        console.log("RES:", res)
+    }, [res])
+
     const handleDeleteClick = async (event, id) => {
         event?.preventDefault();
 
@@ -136,7 +140,7 @@ export default function MainSegment() {
                         </div>
                         <div className="h-5"></div>
                         <div className="grid grid-cols-1 gap-24 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
-                            {/* {res.map((value) => {
+                            {res.map((value) => {
                                 return (
                                     <ItemCard
                                         key={value.id}
@@ -148,7 +152,7 @@ export default function MainSegment() {
                                         handleSelect={handleSelectClick}
                                     />
                                 );
-                            })} */}
+                            })}
                         </div>
                     </div>
                 </div>

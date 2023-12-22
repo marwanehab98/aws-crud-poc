@@ -1,6 +1,7 @@
 'use client';
 
 export default function isAuth() {
+    console.log("IS_AUTH")
     try {
         let token = localStorage.getItem('id_token');
         let expiration_date = localStorage.getItem('expiration_date');

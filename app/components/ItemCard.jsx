@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from "react";
+
 const ItemCard = ({
     id,
     name,
@@ -8,6 +10,9 @@ const ItemCard = ({
     handleDelete,
     handleSelect,
 }) => {
+    useEffect(() => {
+        console.log(id, name, price, selected, handleDelete, handleSelect)
+    }, [])
     return (
         <div
             data-testid="recipe-card"
