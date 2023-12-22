@@ -22,17 +22,19 @@ export default function Redirect() {
     }, [])
 
     useEffect(() => {
-        const splitHash = hash?.split('&');
-        splitHash.forEach((value) => {
-            const hashObject = value.split('=');
-            if (hashObject[0] === 'expires_in') {
-                let expiration_date = Date.now() / 1000 + parseInt(hashObject[1]);
-                localStorage.setItem('expiration_date', `${expiration_date}`);
-            }
-            localStorage.setItem(hashObject[0], hashObject[1]);
-        });
+        if (hash && hash.length > 0) {
+            const splitHash = hash?.split('&');
+            splitHash.forEach((value) => {
+                const hashObject = value.split('=');
+                if (hashObject[0] === 'expires_in') {
+                    let expiration_date = Date.now() / 1000 + parseInt(hashObject[1]);
+                    localStorage.setItem('expiration_date', `${expiration_date}`);
+                }
+                localStorage.setItem(hashObject[0], hashObject[1]);
+            });
 
-        router.replace('/');
+            router.replace('/');
+        }
     }, [hash]);
 
     return <></>;
